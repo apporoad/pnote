@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <form method="get" action="/pnote/save">
+    <div >
+        <button>保存</button>
+    </div>
+    <textarea id="txtMain"  style=" width: 100%; height: 500px;"></textarea>
+
+        </form>
+</body>
+</html>
+        <script type="text/javascript">
+            //保存事件
+            document.onkeydown = function(e){
+                e = window.event || e;
+                var keycode = e.keyCode || e.which;
+                if(e.ctrlKey && keycode== 83){
+                    e.preventDefault();
+                    window.event.returnValue= false;
+                    alert("as");
+                }
+            }
+
+        </script>
