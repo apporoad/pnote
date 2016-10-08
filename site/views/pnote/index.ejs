@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <title></title>
 </head>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
 <body>
     <form method="get" action="/pnote/save">
         <div>
-            当前路径：<b name="path">test</b>
+            当前路径：<b name="path"><%= path %></b>
         </div>
     <div >
         <button id="btnSave" onclick="return btnSave_click()">保存</button>
     </div>
-    <textarea id="txtMain" name="txtMain"  style=" width: 100%; height: 500px;">test</textarea>
+    <textarea id="txtMain" name="txtMain"  style=" width: 100%; height: 500px;"><%= text%></textarea>
 
         </form>
 </body>
@@ -30,7 +31,18 @@
             }
             //保存按钮事件
             function btnSave_click(){
-                alert('');
+                $.ajax({
+                    type: 'get',
+                    url: '/pnote/save' ,
+                    data: {} ,
+                    success: function(data){
+                        alert(data);
+                    } ,
+                    dataType: 'html',
+                    error:function(err){
+                        alert(err);
+                    }
+                });
                 return false;
             }
 
