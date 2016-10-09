@@ -8,7 +8,8 @@
 <body>
     <form method="get" action="/pnote/save">
         <div>
-            当前路径：<b name="path"><%= path %></b>
+            当前路径：<b name="path" id="bPath"><%= path %></b>
+
         </div>
     <div >
         <button id="btnSave" onclick="return btnSave_click()">保存</button>
@@ -26,21 +27,25 @@
                 if(e.ctrlKey && keycode== 83){
                     e.preventDefault();
                     window.event.returnValue= false;
-                    alert("as");
+                    //alert("as");
+                    btnSave_click();
                 }
             }
             //保存按钮事件
             function btnSave_click(){
+                var text = $('#txtMain').val();
+                var path = $("#bPath").html();
                 $.ajax({
-                    type: 'get',
+                    type: 'post',
                     url: '/pnote/save' ,
-                    data: {} ,
+                    data: {path:path,text:text} ,
                     success: function(data){
-                        alert(data);
+                        //alert(data.success);
+                        alert('saved');
                     } ,
-                    dataType: 'html',
+                    dataType:'json',
                     error:function(err){
-                        alert(err);
+                        alert('err:'+err);
                     }
                 });
                 return false;
