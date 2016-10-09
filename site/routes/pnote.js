@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 router.get('/save',function(req,res,next){
    //获取path
-    var path ='abc';//req.body.path;
+    var path =req.body.path;
    //获取txt
     //var txt=req.body.txtMain;
    res.send(path);
