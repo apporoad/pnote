@@ -2,7 +2,7 @@
 pnote short for personal note, it is a website for note for everybody
 
 # website
-[site](http://jumpig.com/pnote)
+our sit is [site](http://jumpig.com/pnote)
 
 #how to use 
 * use url like "http://jumpig.com/pnote/yourname" to share your message to everyone
