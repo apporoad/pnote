@@ -25,7 +25,7 @@ router.get('/(all|list)',function(req,res,next){
     p2.collection= 'remark';
     p2.whereStr={"text":{$ne:''}};
     db.select(null,p2,function (result) {
-        res.render('pnote/index', { list : result });
+        res.render('pnote/list', { list : result });
     });
 
 });
