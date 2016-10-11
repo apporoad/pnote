@@ -15,6 +15,20 @@ router.post('/save',function(req,res){
     });
     res.json({success:path});
 });
+
+//列表
+router.get('/(all|list)',function(req,res,next){
+     //获取orginPath
+    var path = req.originalUrl;
+    //获取文件内容
+    var p2={};
+    p2.collection= 'remark';
+    p2.whereStr={"text":{$ne:''}};
+    db.select(null,p2,function (result) {
+        res.render('pnote/index', { list : result });
+    });
+
+});
 /* GET home page. */
 router.get('/*', function(req, res, next) {
     //获取orginPath
