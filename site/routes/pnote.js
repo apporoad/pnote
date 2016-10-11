@@ -17,7 +17,7 @@ router.post('/save',function(req,res){
 });
 
 //列表
-router.get('/(all|list)',function(req,res,next){
+router.get('/list',function(req,res,next){
      //获取orginPath
     var path = req.originalUrl;
     //获取文件内容
