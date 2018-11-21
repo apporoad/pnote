@@ -1,0 +1,29 @@
+{
+  "name": "pnote",
+  "version": "1.0.0",
+  "description": "pnote",
+  "main": "site/bin/www",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apporoad/pnote.git"
+  },
+  "author": "apporoad",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/apporoad/pnote/issues"
+  },
+  "homepage": "https://github.com/apporoad/pnote#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.2.0",
+    "ejs": "~2.4.1",
+    "express": "^4.16.4",
+    "mini-dbx": "^1.0.2",
+    "morgan": "^1.9.1",
+    "serve-favicon": "^2.5.0"
+  }
+}
