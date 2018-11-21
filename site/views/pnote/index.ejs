@@ -8,16 +8,22 @@
     <title></title>
 </head>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
-<body>
+<body onbeforeunload="btnSave_click()">
     <form method="get" action="/pnote/save">
         <div>
-            当前路径：<b name="path" id="bPath"><%= path %></b>
+            current path:<b name="path" id="bPath"></b>  &nbsp;&nbsp; <i>F2 focus here</i>
+            <!-- <input autocomplete="off" type="text" id="txtPath"  value="<%= cpath %>"/> -->
 
+            <textarea id="txtPath"  style=" width: 100%;" onkeydown="return pathKeyDown()"  rows="1" ><%= cpath %></textarea>
         </div>
     <div >
-        <button id="btnSave" onclick="return btnSave_click()">保存</button>
+        <br>
+        <a href="/list">redirect to list
+        </a> &nbsp;&nbsp;&nbsp;&nbsp;
+        <a id="btnSave" href="javascript:void(0)" onclick="return btnSave_click()">ctrl+s to save</a>
     </div>
-    <textarea id="txtMain" name="txtMain"  style=" width: 100%; height: 500px;"><%= text%></textarea>
+    <br>
+    <textarea id="txtMain" name="txtMain"  style=" width: 100%; height: 500px;" ><%= text%></textarea>
 
         </form>
 </body>
@@ -33,14 +39,36 @@
                     //alert("as");
                     btnSave_click();
                 }
+                if(keycode == 113){
+                    //保存操作
+                    btnSave_click()
+                    var t=$("txtPath").val(); 
+                    $("#txtPath").focus().val(t)
+                }
+                // if(keycode == 13 && document.getElementById('txtPath').activeElement){
+                //     //alert(1)
+                //     window.location.href = '/' + document.getElementById('txtPath').value;
+                // }
+            }
+
+            function pathKeyDown(){
+                e = window.event || e;
+                var keycode = e.keyCode || e.which;
+                if(keycode == 13){
+                    //不进行保存操作
+                    btnSave_click = function(){}
+                    window.location.href = "/"+ $("#txtPath").val()
+                return false
+                }
+                return true
             }
             //保存按钮事件
-            function btnSave_click(){
+            var btnSave_click = function(){
                 var text = $('#txtMain').val();
-                var path = $("#bPath").html();
+                var path =  "/"+ $("#txtPath").val();
                 $.ajax({
                     type: 'post',
-                    url: '/pnote/save' ,
+                    url: '/save' ,
                     data: {path:path,text:text} ,
                     success: function(data){
                         //alert(data.success);
@@ -48,7 +76,8 @@
                     } ,
                     dataType:'json',
                     error:function(err){
-                        alert('err:'+err);
+                        //alert('err:'+JSON.stringify(err));
+                        console.log('err:'+JSON.stringify(err))
                     }
                 });
                 return false;

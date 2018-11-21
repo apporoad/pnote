@@ -18,9 +18,11 @@ router.post('/save',function(req,res){
     
     if(datas.length> 0){
         //修改
+        console.log('修改成功: ' + path + " : " + text)
         db.update(path,{data:text},'#==0')
     }else{
         //insert
+        console.log('新增成功: ' + path + " : " + text)
         db.insert(path,{data : text})
     }
     res.json({success:path});
@@ -62,7 +64,7 @@ router.get('/*', function(req, res, next) {
     {
        txt =''
     }
-    res.render('pnote/index', { text: txt,path: path });
+    res.render('pnote/index', { text: txt,path: path,cpath: path.substring(1) });
 
 });
 
