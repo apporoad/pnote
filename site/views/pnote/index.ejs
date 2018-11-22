@@ -29,6 +29,7 @@
 </body>
 </html>
         <script type="text/javascript">
+           //document.designMode = 'on'
             //保存事件
             document.onkeydown = function(e){
                 e = window.event || e;
@@ -42,8 +43,10 @@
                 if(keycode == 113){
                     //保存操作
                     btnSave_click()
-                    var t=$("txtPath").val(); 
-                    $("#txtPath").focus().val(t)
+                    var t=$("#txtPath").val(); 
+                    $("#txtPath").focus()//.val(t)
+                    // console.log(t.length)
+                    $("#txtPath")[0].setSelectionRange(0,t.length);
                 }
                 // if(keycode == 13 && document.getElementById('txtPath').activeElement){
                 //     //alert(1)
@@ -83,4 +86,7 @@
                 return false;
             }
 
+
+            //focus
+            $('#txtMain').focus()
         </script>

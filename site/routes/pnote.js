@@ -19,12 +19,19 @@ router.post('/save',function(req,res){
     
     if(datas.length> 0){
         //修改
-        console.log('修改成功: ' + path + " : " + text)
-        db.update(path,{data:text},'#==0')
+        if(text){
+            console.log('修改成功: ' + path + " : " + text)
+            db.update(path,{data:text},'#==0')
+        }else{
+            console.log('删除成功 ' + path)
+            db.remove(path)
+        }
     }else{
         //insert
-        console.log('新增成功: ' + path + " : " + text)
-        db.insert(path,{data : text})
+        if(text){
+            console.log('新增成功: ' + path + " : " + text)
+            db.insert(path,{data : text})
+        }
     }
     res.json({success:path});
 });
