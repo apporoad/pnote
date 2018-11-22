@@ -10,4 +10,14 @@ our site is [site](http://www.holyond.top)
 * you can click save button or use ctrl + s to save your editing
 
 #how to deploy
-todo 
+    npm i -g pm2
+    //install 
+    cd [workspace]
+    npm install
+    //edit config
+        config.json
+    //start 
+    pm2 start site/bin/www
+
+    //stop
+    pm2 stop site/bin/www

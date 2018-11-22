@@ -2,10 +2,11 @@ var express = require('express');
 var router = express.Router();
 var fs = require('fs')
 var pp = require('path')
+var config = require('../../config.js').get()
 // var db=require('./js/mongoHelper');
 
 var storage = require('mini-dbx');
-var db = storage('../../db.json');
+var db = storage(config.dbPath);
 
 
 router.post('/save',function(req,res){
@@ -40,7 +41,7 @@ router.get('/list',function(req,res,next){
     //     res.render('pnote/list', { list : result });
     // });
 
-    fs.readFile( pp.resolve(__dirname, '../..')+  '/db.json','utf8',function (err, data) {
+    fs.readFile( config.dbPath,'utf8',function (err, data) {
         if(err) console.log(err);
         var test1=JSON.parse(data);
         var rs = new Array()
