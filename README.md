@@ -2,7 +2,8 @@
 pnote short for personal note, it is a website for note for everybody
 
 # website
-our site is [site](http://www.holyond.top)
+private site is [site](http://www.holyond.top)
+heroku site is [heroku](https://ppnote.herokuapp.com)
 
 # how to use 
 * use url like "http://www.holyond.top/yourname" to share your message to anyone
