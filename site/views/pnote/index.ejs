@@ -5,10 +5,8 @@
 <head lang="en">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>pnote</title>
+    <title></title>
 </head>
-<<<<<<< HEAD
-<script src="http://code.jquery.com/jquery-latest.js"></script>
 <style>
 .github-fork {
     position: fixed;
@@ -16,10 +14,9 @@
     right: 0;
 }
 </style>
-=======
 <script src="js/jquery-latest.js"></script>
->>>>>>> 657776b6e1584f4801ab8a15013740c574266464
 <body onbeforeunload="btnSave_click()">
+    <a class="github-fork" href="https://github.com/apporoad/pnote" target="_blank"><img src="https://chokcoco.github.io/demo/curveJS/images/forkme.png"></a>
     <form method="get" action="/pnote/save">
         <div>
             current path:<b name="path" id="bPath"></b>  &nbsp;&nbsp; <i>F2 focus here</i>
@@ -36,7 +33,7 @@
         <br>
         <a href="/list">redirect to list
         </a> &nbsp;&nbsp;&nbsp;&nbsp;
-        <a id="btnSave" href="javascript:void(0)" onclick="return btnSave_click()">ctrl+s to save</a>
+       <a id="btnSave" href="javascript:void(0)" onclick="return btnSave_click()">ctrl+s to save</a>
     </div>
     <br>
     <textarea id="txtMain" name="txtMain"  style=" width: 100%; height: 500px;" ><%= text%></textarea>
