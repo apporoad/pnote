@@ -5,8 +5,9 @@
 <head lang="en">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title></title>
+    <title>pnote</title>
 </head>
+<<<<<<< HEAD
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <style>
 .github-fork {
@@ -15,10 +16,18 @@
     right: 0;
 }
 </style>
+=======
+<script src="js/jquery-latest.js"></script>
+>>>>>>> 657776b6e1584f4801ab8a15013740c574266464
 <body onbeforeunload="btnSave_click()">
     <form method="get" action="/pnote/save">
         <div>
             current path:<b name="path" id="bPath"></b>  &nbsp;&nbsp; <i>F2 focus here</i>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="https://github.com/apporoad/pnote" target="_blank" >details @ github.com/apporoad/pnote</a>
             <!-- <input autocomplete="off" type="text" id="txtPath"  value="<%= cpath %>"/> -->
 
             <textarea id="txtPath"  style=" width: 100%;" onkeydown="return pathKeyDown()"  rows="1" ><%= cpath %></textarea>
