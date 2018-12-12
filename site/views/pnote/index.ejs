@@ -78,9 +78,14 @@
                 }
                 return true
             }
+            var orginText = $('#txtMain').val();
             //保存按钮事件
             var btnSave_click = function(){
                 var text = $('#txtMain').val();
+                if(orginText == text){
+                    return;
+                }
+                orginText = text;
                 var path =  "/"+ $("#txtPath").val();
                 $.ajax({
                     type: 'post',

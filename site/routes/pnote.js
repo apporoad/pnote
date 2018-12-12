@@ -13,6 +13,7 @@ router.post('/save',function(req,res){
    //获取path
     var path =req.body.path;
     var text = req.body.text;
+    console.log(req.body)
 
     //查看有没有
     var datas = db.select(path)
@@ -73,6 +74,24 @@ router.get('/*', function(req, res, next) {
        txt =''
     }
     res.render('pnote/index', { text: txt,path: path,cpath: path.substring(1) });
+
+});
+
+router.post('/*', function(req, res, next) {
+    //获取orginPath
+    var path = req.originalUrl;
+    //获取文件内容
+    var result = db.select(path,'#==0')
+    if(result.length >0)
+    {
+        txt=result[0].data;
+    }
+    else
+    {
+       txt =''
+    }
+    
+    res.send(txt)
 
 });
 
