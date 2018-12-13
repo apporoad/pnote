@@ -40,6 +40,7 @@ router.post('/save',function(req,res){
 //列表
 router.get('/list',function(req,res,next){
      //获取orginPath
+     //console.log(req.query)
     var path = req.originalUrl;
     //获取文件内容
     // var p2={};
@@ -55,7 +56,7 @@ router.get('/list',function(req,res,next){
         var rs = new Array()
         for(var key in test1)
             rs.push({ path : key})
-        if(req.isAPI){
+        if(req.query.isAPI){
             res.send(rs)
         }
         else
