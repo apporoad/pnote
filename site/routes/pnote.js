@@ -55,10 +55,17 @@ router.get('/list',function(req,res,next){
         var rs = new Array()
         for(var key in test1)
             rs.push({ path : key})
-        res.render('pnote/list', { list : rs });
+        if(req.isAPI){
+            res.send(rs)
+        }
+        else
+        {
+            res.render('pnote/list', { list : rs });
+        }
     });
 
 });
+
 /* GET home page. */
 router.get('/*', function(req, res, next) {
     //获取orginPath
