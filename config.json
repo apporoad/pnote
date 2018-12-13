@@ -1,4 +1,4 @@
 {
-    "port" : 10000,
+    "port" : 80,
     "dbPath": null
 }
