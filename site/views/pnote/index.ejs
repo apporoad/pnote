@@ -17,16 +17,17 @@
 <script src="js/jquery-latest.js"></script>
 <body onbeforeunload="btnSave_click()">
     <a class="github-fork" id="forkme" href="https://github.com/apporoad/pnote" target="_blank"><img src="images/forkme.png"></a>
-    <form method="get" action="/pnote/save">
+    <form>
         <div>
-            current path:<b name="path" id="bPath"></b>  &nbsp;&nbsp; <i>F2 focus here</i>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="https://github.com/apporoad/pnote" target="_blank" >details @ github.com/apporoad/pnote</a>
-            <!-- <input autocomplete="off" type="text" id="txtPath"  value="<%= cpath %>"/> -->
-
+            <div id="pathTitle">
+                current path:<b name="path" id="bPath"></b>  &nbsp;&nbsp; <i>F2 focus here</i>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="https://github.com/apporoad/pnote" target="_blank" >details @ github.com/apporoad/pnote</a>
+                <!-- <input autocomplete="off" type="text" id="txtPath"  value="<%= cpath %>"/> -->
+            </div>
             <table style="width:100%">
                 <tr>
                     <td width="80%">
@@ -39,7 +40,7 @@
             </table>
         </div>
     <div >
-        <br>
+
         <a href="/list">redirect to list
         </a> &nbsp;&nbsp;&nbsp;&nbsp;
        <a id="btnSave" href="javascript:void(0)" onclick="return btnSave_click()">ctrl+s to save</a>
@@ -134,5 +135,6 @@
             }else{  
                     //window.location.href="#";  
                     $("#forkme").hide()
+                    $("#pathTitle").hide()
             }
         </script>
