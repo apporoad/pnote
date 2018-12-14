@@ -13,10 +13,13 @@
     top: 0;
     right: 0;
 }
+textarea {
+    word-wrap:normal;
+}
 </style>
 <script src="js/jquery-latest.js"></script>
 <body onbeforeunload="btnSave_click()">
-    <a class="github-fork" href="https://github.com/apporoad/pnote" target="_blank"><img src="https://chokcoco.github.io/demo/curveJS/images/forkme.png"></a>
+    <a class="github-fork" id="forkme" href="https://github.com/apporoad/pnote" target="_blank"><img src="images/forkme.png"></a>
     <form method="get" action="/pnote/save">
         <div>
             current path:<b name="path" id="bPath"></b>  &nbsp;&nbsp; <i>F2 focus here</i>
@@ -107,4 +110,21 @@
 
             //focus
             $('#txtMain').focus()
+
+
+            (function browser(){
+            var sUserAgent = navigator.userAgent.toLowerCase();
+            var bIsIpad = sUserAgent.match(/ipad/i) == 'ipad';
+            var bIsIphone = sUserAgent.match(/iphone os/i) == 'iphone os';
+            var bIsMidp = sUserAgent.match(/midp/i) == 'midp';
+            var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == 'rv:1.2.3.4';
+            var bIsUc = sUserAgent.match(/ucweb/i) == 'web';
+            var bIsCE = sUserAgent.match(/windows ce/i) == 'windows ce';
+            var bIsWM = sUserAgent.match(/windows mobile/i) == 'windows mobile';
+            var bIsAndroid = sUserAgent.match(/android/i) == 'android';
+        
+            if(bIsIpad || bIsIphone || bIsMidp || bIsUc7 || bIsUc || bIsCE || bIsWM || bIsAndroid ){
+                $("#forkme").hide()
+            }
+            })();
         </script>
