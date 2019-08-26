@@ -96,6 +96,70 @@ function getUrlRelativePath()
 　　　　}
 　　　　return relUrl;
 　　}
+function getQueryVariable(variable)
+{
+       var query = window.location.search.substring(1);
+       var vars = query.split("&");
+       for (var i=0;i<vars.length;i++) {
+               var pair = vars[i].split("=");
+               if(pair[0] == variable){return pair[1];}
+       }
+       return(false);
+}
+
+// markdown
+var rendererMD = new marked.Renderer();
+    marked.setOptions({
+      renderer: rendererMD,
+      gfm: true,
+      tables: true,
+      breaks: false,
+      pedantic: false,
+      sanitize: false,
+      smartLists: true,
+      smartypants: false
+    });
+    marked.setOptions({
+        highlight: function (code) {
+        return hljs.highlightAuto(code).value;
+      }
+    });
+
+var isNeedRender=true
+var render = ()=>{
+    document.getElementById('view').innerHTML = marked($('#txtMain').val());
+}
+setInterval(() => {
+    if(isNeedRender){
+        isNeedRender=false
+        render()
+    }
+}, 100);
+var setRender=()=>{
+    isNeedRender=true
+}
+
+//变更模式
+var changeMode=()=>{
+    if($('.edit').is(":visible")){
+        $('#view').css({
+            "width" : "100%",
+            "height":"100%",
+            "background":"#F0FFEE",
+            "position" : "absolute"
+        })
+        $('.edit').hide()
+    }else{
+        $('.edit').show()
+        $('#view').css({
+            "width" : "100%",
+            "height":"",
+            "background":"",
+            "position" : ""
+        })
+    }
+   
+}
 
 //focus
 $('#txtMain').focus()
@@ -114,6 +178,7 @@ $(document).ready(function(){
             //alert('saved');
             if(data&& data.value){
                 $("#txtMain").val(data.value)
+                setRender()
             }
         } ,
         dataType:'json',
@@ -147,4 +212,38 @@ $(document).ready(function(){
             console.log('err:'+JSON.stringify(err))
         }
     });
+
+    // view mode
+    if(getQueryVariable('mode') == "view"){
+        changeMode()
+    }else{
+        //edit support double click
+
+        tippy('#view', {
+            arrow: true,
+            arrowType: 'round', // or 'sharp' (default)
+            animation: 'fade',
+            placement: 'top', // or 'left', 'right', ...
+            content: 'try double click'
+          })
+        
+          $("#view").bind("dblclick", changeMode)
+    }
+
 }); 
+
+
+
+
+//tip
+
+tippy('#txtMain', {
+    arrow: true,
+    arrowType: 'round', // or 'sharp' (default)
+    animation: 'fade',
+    placement: 'bottom', // or 'left', 'right', ...
+    trigger: 'click', // or 'focus'
+    content: 'here support markdown, try it'
+  })
+
+
