@@ -31,7 +31,7 @@ pathKeyDown = ()=>{
 var  jump = ()=>{
     //不进行保存操作
     btnSave_click = function(){}
-    window.location.href = "/"+ $("#txtPath").val()
+    window.location.href =  $("#txtPath").val().indexOf('/')==0 ? $("#txtPath").val() : ("/"+$("#txtPath").val())
     return false
 }
 
@@ -44,11 +44,16 @@ var btnSave_click = function(){
                     return;
                 }
                 orginText = text;
-                var path =  "/"+ $("#txtPath").val();
+                var path = $("#txtPath").val();
+                if(path.indexOf('/')!=0){
+                    path = '/' + path
+                }
+                var data= {}
+                data.value = text
                 $.ajax({
-                    type: 'post',
-                    url: '/save' ,
-                    data: {path:path,text:text} ,
+                    type: text ? 'put' : 'delete',
+                    url: '/data?node=' + path ,
+                    data:  data,
                     success: function(data){
                         //alert(data.success);
                         //alert('saved');
@@ -62,12 +67,23 @@ var btnSave_click = function(){
                 return false;
             }
 
+function getHomePath(){
+    var url = document.location.toString();
+    var arrUrl = url.split("//");
+// only support pnote as subDir
+　　　　var start = arrUrl[1].indexOf("/");
+    var path = arrUrl[0]
+        path += arrUrl[1].substring(0,start || null)
+        
+        if(arrUrl[1].indexOf("/pnote/") > -1){
+            path +="/pnote/"
+        }
+　　　　return path
+}
 function getUrlRelativePath()
 　　{
 　　　　var url = document.location.toString();
 　　　　var arrUrl = url.split("//");
-
-
         // only support pnote as subDir
 　　　　var start = arrUrl[1].indexOf("/");
         if(arrUrl[1].indexOf("/pnote/") > -1){
@@ -88,4 +104,47 @@ $('#txtMain').focus()
 $(document).ready(function(){ 
     var rPath = getUrlRelativePath()
     $("#txtPath").val(rPath)
+
+    //loading
+    $.ajax({
+        type: 'get',
+        url: '/data?node=' + rPath ,
+        success: function(data){
+            //alert(data.value);
+            //alert('saved');
+            if(data&& data.value){
+                $("#txtMain").val(data.value)
+            }
+        } ,
+        dataType:'json',
+        error:function(err){
+            //alert('err:'+JSON.stringify(err));
+            console.log('err:'+JSON.stringify(err))
+        }
+    });
+
+    // loading list
+    $.ajax({
+        type: 'get',
+        url: '/data',
+        success: function(data){
+            //alert(data.value);
+            //alert('saved');
+            
+            //<li class="uk-active"><a href="#">Active</a></li>
+            // <li><a href="#">Item</a></li>
+            // <li><a href="#">Item</a></li>
+            // <li><a href="#">Item</a></li>
+            // <li><a href="#">Item</a></li>
+            for(var key in data){//遍历json数组时，这么写p为索引，0,1
+                $("#navList").append($('<li><a href="' + key+ '">' + key+'</a></li>'));    
+             }
+              
+        } ,
+        dataType:'json',
+        error:function(err){
+            //alert('err:'+JSON.stringify(err));
+            console.log('err:'+JSON.stringify(err))
+        }
+    });
 }); 

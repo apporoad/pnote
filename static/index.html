@@ -16,35 +16,26 @@
     </style>
     <body onbeforeunload="btnSave_click()">
         <div class="uk-margin">
-            <a href="#offcanvas-slide" style="width: 25%" class="uk-button uk-button-secondary" uk-toggle>nav</a>
-            <form class="uk-search uk-search-default pnote-search">
-                <a href="" uk-search-icon></a>
+            <a href="#offcanvas-slide" style="width: 25%" class="uk-button uk-button-secondary" uk-toggle >nav</a>
+            <div class="uk-search uk-search-default pnote-search">
+                <a  href="javascript:void(0);" uk-search-icon onclick="return jump()"></a>
                 <input id="txtPath" class="uk-search-input" type="search" onkeydown="return pathKeyDown()" placeholder="F2 to focus here">
-            </form>
+            </div>
         </div>
         <form>
             <fieldset class="uk-fieldset">
         
                 <div class="uk-margin">
                     
-                    <input  class="uk-button uk-button-primary  uk-width-1-1"  type="button" value="save(ctrl+s)" >
+                    <input  class="uk-button uk-button-primary  uk-width-1-1" onclick="btnSave_click()"  type="button" value="save(ctrl+s)" >
                     <textarea id="txtMain" class="uk-textarea" rows="20" placeholder="Textarea"></textarea>
                 </div>
                 
 
                     <div id="offcanvas-slide" uk-offcanvas>
                         <div class="uk-offcanvas-bar">
-
-                            <ul class="uk-nav uk-nav-default">
-                                <li class="uk-active"><a href="#">Active</a></li>
-                                <li><a href="#">Item</a></li>
-                                <li class="uk-nav-header">Header</li>
-                                <li><a href="#">Item</a></li>
-                                <li><a href="#">Item</a></li>
-                                <li class="uk-nav-divider"></li>
-                                <li><a href="#">Item</a></li>
+                            <ul id="navList" class="uk-nav uk-nav-default">
                             </ul>
-
                         </div>
                     </div>
             </fieldset>
