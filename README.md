@@ -34,6 +34,19 @@ try get http://localhost:11540/abc?mode=view
 
 ```
 
+## docker run 
+```
+mkdir -p /data/pnote
+cd /data/pnote
+cat > data.json << eof
+{"/":{"value":"hello good day"}}
+eof
+
+docker run -d --name pnote -p 1154:1154 -v /data/pnote/data.json:/pnote/api/data.json apporoad/pnote:1
+
+#visit localhost:1154
+```
+
 
 ## dockerfile
 ```bash
@@ -44,14 +57,6 @@ cd pnote
 docker build -t pnote:1 .
 
 docker run -d --name pnote -p 1154:1154 pnote:1 
-
-#or
-mkdir -p /data/pnote
-cd /data/pnote
-cat > data.json << eof
-{"/":{"value":"hello good day"}}
-eof
-docker run -d --name pnote -p 1154:1154 -v /data/pnote/data.json:/pnote/api/data.json pnote:1
 
 #visit localhost:1154
 ```
