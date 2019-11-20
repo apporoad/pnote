@@ -54,9 +54,9 @@ git clone https://github.com/apporoad/pnote.git
 
 cd pnote
 
-docker build -t pnote:1 .
+docker build -t apporoad/pnote:1 .
 
-docker run -d --name pnote -p 1154:1154 pnote:1 
+docker run -d --name pnote -p 1154:1154 apporoad/pnote:1 
 
 #visit localhost:1154
 ```
