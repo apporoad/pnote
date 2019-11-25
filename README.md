@@ -14,6 +14,19 @@ private site is [site](http://www.holyond.top)
 
 # how to deploy
 
+just try it
+```bash
+npm i -g aok.js
+
+aok https://github.com/apporoad/pnote.git  -r api -s static
+#or
+aok https://github.com/apporoad/pnote/blob/master/pnote.zip?raw=true --type zip -r api -s static
+
+rm -rf .aok
+
+```
+produce env 
+
 ```bash
 git clone https://github.com/apporoad/pnote.git
 cd pnote
